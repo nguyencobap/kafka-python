@@ -9,7 +9,7 @@ if config.kafka_ssl_enable:
     ssl_context.load_cert_chain(certfile=config.kafka_cert_file, keyfile=config.kafka_key_file)
     consumer = KafkaConsumer(
         config.kafka_topic,
-        bootstrap_servers=[config.kafka_bootstrap_server],
+        bootstrap_servers=config.kafka_bootstrap_server,
         group_id='my-group1',
         auto_offset_reset='earliest',
         security_protocol='SSL',
@@ -18,7 +18,7 @@ if config.kafka_ssl_enable:
 else:
     consumer = KafkaConsumer(
         config.kafka_topic,
-        bootstrap_servers=[config.kafka_bootstrap_server],
+        bootstrap_servers=config.kafka_bootstrap_server,
         group_id='my-group',
         auto_offset_reset='earliest',
     )

@@ -24,7 +24,7 @@ class Config(metaclass=ConfigMeta):
 
     def __init__(self):
         if "KAFKA_BOOTSTRAP_SERVER" in os.environ:
-            self.kafka_bootstrap_server = os.environ["KAFKA_BOOTSTRAP_SERVER"]
+            self.kafka_bootstrap_server = os.environ["KAFKA_BOOTSTRAP_SERVER"].split(",")
         if "KAFKA_TOPIC" in os.environ:
             self.kafka_topic = os.environ["KAFKA_TOPIC"]
         if "KAFKA_SSL_ENABLE" in os.environ:
